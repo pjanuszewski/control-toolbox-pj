@@ -44,8 +44,9 @@ public:
     //! default constructor
     StepInputController(const Parameters& parameters = Parameters()) : parameters_(parameters) {}
     //! copy constructor
-    StepInputController(const StepInputController& arg) : parameters_(arg.parameters_) {}
-    //! deep cloning
+
+    StepInputController(const StepInputController& arg) : Controller<1, 1, double>(arg), parameters_(arg.parameters_) {}    //! deep cloning
+
     StepInputController* clone() const override { return new StepInputController(*this); }
     //! computes control input
     /*!

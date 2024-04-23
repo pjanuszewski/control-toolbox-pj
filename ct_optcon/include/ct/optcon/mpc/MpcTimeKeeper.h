@@ -189,7 +189,7 @@ public:
 	 * May be used to trigger corresponding events, such as stopping the control loop.
 	 * @return bool, true if final time horizon has been reached
 	 */
-    const bool finalPointReached() const { return finalPointReached_; }
+    bool finalPointReached() const { return finalPointReached_; }
     //! update mpc settings
     /*!
 	 * @param settings

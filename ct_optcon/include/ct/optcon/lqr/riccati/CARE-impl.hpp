@@ -15,19 +15,19 @@ CARE<STATE_DIM, CONTROL_DIM>::CARE()
     schur_matrix_t T;
     schur_matrix_t U;
 
-    int SELECT[2 * STATE_DIM];
-    int N = 2 * STATE_DIM;
-    double WR[T.ColsAtCompileTime];
-    double WI[T.ColsAtCompileTime];
-    int MS;
-    double S;
-    double SEP;
-    double WORKDUMMY[1];
-    int LWORK = -1;
-    int IWORKQUERY[1];
-    int LIWORK = -1;
-    int INFO = 0;
-    int TCols = schur_matrix_t::ColsAtCompileTime;
+    __attribute__((unused)) int SELECT[2 * STATE_DIM];
+    __attribute__((unused)) int N = 2 * STATE_DIM;
+    __attribute__((unused)) double WR[T.ColsAtCompileTime];
+    __attribute__((unused)) double WI[T.ColsAtCompileTime];
+    __attribute__((unused)) int MS;
+    __attribute__((unused)) double S;
+    __attribute__((unused)) double SEP;
+    __attribute__((unused)) double WORKDUMMY[1];
+    __attribute__((unused)) int LWORK = -1;
+    __attribute__((unused)) int IWORKQUERY[1];
+    __attribute__((unused)) int LIWORK = -1;
+    __attribute__((unused)) int INFO = 0;
+    __attribute__((unused)) int TCols = schur_matrix_t::ColsAtCompileTime;
 
 #ifdef CT_USE_LAPACK
     dtrsen_("N", "V", &SELECT[0], &TCols, T.data(), &N, U.data(), &N, &WR[0], &WI[0], &MS, &S, &SEP, WORKDUMMY, &LWORK,

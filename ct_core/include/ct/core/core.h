@@ -25,6 +25,7 @@ Licensed under the BSD-2 license (see LICENSE file in main directory)
 
 // Include file for convenience
 #include <Eigen/Core>
+#include <Eigen/Dense>
 #include <Eigen/Sparse>
 #include <Eigen/StdVector>
 #include <unsupported/Eigen/MatrixFunctions>
@@ -41,7 +42,7 @@ Licensed under the BSD-2 license (see LICENSE file in main directory)
 #include "Simulation"
 #include "Switching"
 
-#include "templateDir.h"
+//#include "templateDir.h"
 
 #ifdef PLOTTING_ENABLED
 #include "plot/plot.h"
