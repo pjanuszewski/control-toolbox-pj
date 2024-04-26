@@ -11,23 +11,23 @@ namespace optcon {
 template <size_t STATE_DIM, size_t CONTROL_DIM>
 CARE<STATE_DIM, CONTROL_DIM>::CARE()
 {
-    // we have to find the optimal work size of schur reordering
-    schur_matrix_t T;
-    schur_matrix_t U;
+    // Suppress unused variable warnings
+    __attribute__((unused)) schur_matrix_t T = schur_matrix_t::Zero();
+    __attribute__((unused)) schur_matrix_t U = schur_matrix_t::Zero();
 
-    __attribute__((unused)) int SELECT[2 * STATE_DIM];
+    __attribute__((unused)) int SELECT[2 * STATE_DIM] = {0};
     __attribute__((unused)) int N = 2 * STATE_DIM;
-    __attribute__((unused)) double WR[T.ColsAtCompileTime];
-    __attribute__((unused)) double WI[T.ColsAtCompileTime];
-    __attribute__((unused)) int MS;
-    __attribute__((unused)) double S;
-    __attribute__((unused)) double SEP;
-    __attribute__((unused)) double WORKDUMMY[1];
+    __attribute__((unused)) double WR[T.ColsAtCompileTime] = {0};
+    __attribute__((unused)) double WI[T.ColsAtCompileTime] = {0};
+    __attribute__((unused)) int MS = 0;
+    __attribute__((unused)) double S = 0.0;
+    __attribute__((unused)) double SEP = 0.0;
+    __attribute__((unused)) double WORKDUMMY[1] = {0};
     __attribute__((unused)) int LWORK = -1;
-    __attribute__((unused)) int IWORKQUERY[1];
+    __attribute__((unused)) int IWORKQUERY[1] = {0};
     __attribute__((unused)) int LIWORK = -1;
     __attribute__((unused)) int INFO = 0;
-    __attribute__((unused)) int TCols = schur_matrix_t::ColsAtCompileTime;
+    __attribute__((unused)) int TCols = T.ColsAtCompileTime;
 
 #ifdef CT_USE_LAPACK
     dtrsen_("N", "V", &SELECT[0], &TCols, T.data(), &N, U.data(), &N, &WR[0], &WI[0], &MS, &S, &SEP, WORKDUMMY, &LWORK,
@@ -161,12 +161,12 @@ bool CARE<STATE_DIM, CONTROL_DIM>::solveSchurDirect(const schur_matrix_t& M, sta
     schur_matrix_t U(schur_.matrixU());
     schur_matrix_t T(schur_.matrixT());
 
-    int SELECT[2 * STATE_DIM];
-    double WR[2 * STATE_DIM];
-    double WI[2 * STATE_DIM];
-    int MS;
-    double S;
-    double SEP;
+    int SELECT[2 * STATE_DIM] = {0};
+    double WR[2 * STATE_DIM] = {0};
+    double WI[2 * STATE_DIM] = {0};
+    int MS = 0;
+    double S = 0;
+    double SEP = 0;
     int INFO = 0;
     int N = 2 * STATE_DIM;
 

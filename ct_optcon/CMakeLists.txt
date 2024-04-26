@@ -20,6 +20,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 ## find and include required dependencies
 if(NOT TARGET ${ct_core})
 	find_package(ct_core REQUIRED)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../ct_core/include)
 endif()
 # extract interface compile definitions from ct_core as options
 importInterfaceCompileDefinitionsAsOptions(ct_core)
