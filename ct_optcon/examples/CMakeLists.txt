@@ -33,11 +33,11 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/exampleDir.h.in ${CMAKE_CURRENT_SOURC
 # target_link_libraries(ex_DMS ct_optcon)
 # list(APPEND optcon_ex_TARGETS ex_DMS)
 
-# if(CPPADCG)
-#   add_executable(ex_LQR LQR.cpp)
-#   target_link_libraries(ex_LQR ct_optcon)
-#   list(APPEND optcon_ex_TARGETS ex_LQR)
-# endif()
+if(CPPADCG)
+  add_executable(ex_LQR LQR.cpp)
+  target_link_libraries(ex_LQR ct_optcon)
+  list(APPEND optcon_ex_TARGETS ex_LQR)
+endif()
 
 if(HPIPM)
     add_executable(ex_NLOC_boxConstrained NLOC_boxConstrained.cpp)

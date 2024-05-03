@@ -10,6 +10,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/ct-cmake-helpers.cmake)
 
 project(ct_models VERSION 3.0.2 LANGUAGES CXX)
 
+#set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -std=c++14 -Wall -Wno-unknown-pragmas")
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)

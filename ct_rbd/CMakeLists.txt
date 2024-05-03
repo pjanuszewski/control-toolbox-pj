@@ -9,10 +9,13 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/ct-cmake-helpers.cmake)
 
 project(ct_rbd VERSION 3.0.2 LANGUAGES CXX)
 
-
+#set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -std=c++14 -Wall -Wno-unknown-pragmas")
 SET(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
+
+find_package(kindr)
+include_directories(${kindr_INCLUDE_DIRS})
 
 find_package(kindr REQUIRED)
 if(NOT TARGET ${ct_optcon})

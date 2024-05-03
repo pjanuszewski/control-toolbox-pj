@@ -5,7 +5,7 @@
  */
 
 
-#include <ct/optcon/optcon.h>  // also includes ct_core
+#include <ct/optcon/optcon-prespec.h>  // also includes ct_core
 #include "exampleDir.h"
 
 int main(int argc, char** argv)
@@ -55,5 +55,5 @@ int main(int argc, char** argv)
 
     std::cout << "LQR gain matrix:" << std::endl << K << std::endl;
 
-    return 1;
+    return 0;
 }

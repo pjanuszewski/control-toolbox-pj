@@ -10,7 +10,8 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/ct-cmake-helpers.cmake)
 
 project(ct_optcon VERSION 3.0.2 LANGUAGES CXX)
 
-
+#set(USE_PRESPEC TRUE CACHE BOOL "Enable pre-specified template instantiations for Control Toolbox" FORCE)
+#set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -fopenmp -std=c++14 -Wno-unknown-pragmas -Wall -Wfatal-errors")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread -std=c++14 -Wfatal-errors")
