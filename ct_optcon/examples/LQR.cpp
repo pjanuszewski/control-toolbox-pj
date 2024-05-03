@@ -50,12 +50,12 @@ int main(int argc, char** argv)
     static const size_t stateDim = 6;
     static const size_t controlDim = 4;
 
-	static constexpr float A_z = 0.1f;
+	// static constexpr float A_z = 0.1f;
 	static constexpr float A_r = 0.2f;
 	static constexpr float I_xx = 0.02f; // Inertia around the X-axis
 	static constexpr float I_yy = 0.02f; // Inertia around the Y-axis
 	static constexpr float I_zz = 0.04f; // Inertia around the Z-axis
-	static constexpr float mass = 1.5f;  // Mass of the vehicle
+	// static constexpr float mass = 1.5f;  // Mass of the vehicle
 
     Eigen::Matrix<double, stateDim, stateDim> A;
 	Eigen::Matrix<double, stateDim, controlDim> B;
