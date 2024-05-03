@@ -75,8 +75,8 @@ public:
 
 
 private:
-    CARE<STATE_DIM, CONTROL_DIM> care_;  // continuous-time algebraic riccati equation
-
+    CARE<STATE_DIM, CONTROL_DIM> care_;  // continuous-time algebraic riccati equation;        // control feedback matrix
+    // MATLAB
 #ifdef USE_MATLAB_CPP_INTERFACE
     matlab::Engine matlabEngine_;
 #endif
