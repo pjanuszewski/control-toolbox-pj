@@ -242,7 +242,7 @@ public:
 	 *
 	 * @return     The time horizon
 	 */
-    const core::Time getTimeHorizon() const { return timeGrid_->getTimeHorizon(); }
+    core::Time getTimeHorizon() const { return timeGrid_->getTimeHorizon(); }
     /**
 	 * @brief      Updates the timehorizon
 	 *

@@ -19,21 +19,21 @@ void lu(const Eigen::Matrix<SCALAR, Eigen::Dynamic, Eigen::Dynamic>& A,
     {
         for (int i = k; i < n; ++i)
         {
-            SCALAR sum(0.0);
+            SCALAR sum_i(0.0);
             for (int p = 0; p < k; ++p)
             {
-                sum += LU(i, p) * LU(p, k);
+                sum_i += LU(i, p) * LU(p, k);
             }
-            LU(i, k) = A(i, k) - sum;  // not dividing by diagonals
+            LU(i, k) = A(i, k) - sum_i;  // not dividing by diagonals
         }
         for (int j = k + 1; j < n; ++j)
         {
-            SCALAR sum(0.0);
+            SCALAR sum_j(0.0);
             for (int p = 0; p < k; ++p)
             {
-                sum += LU(k, p) * LU(p, j);
+                sum_j += LU(k, p) * LU(p, j);
             }
-            LU(k, j) = (A(k, j) - sum) / LU(k, k);
+            LU(k, j) = (A(k, j) - sum_j) / LU(k, k);
         }
     }
 }
@@ -52,21 +52,21 @@ void solveLU(const Eigen::Matrix<SCALAR, Eigen::Dynamic, Eigen::Dynamic>& LU,
         // Solve LU for jth-column on b
         for (int i = 0; i < n; ++i)
         {
-            SCALAR sum(0.0);
+            SCALAR sum_i(0.0);
             for (int k = 0; k < i; ++k)
             {
-                sum += LU(i, k) * y[k];
+                sum_i += LU(i, k) * y[k];
             }
-            y(i) = (b(i, j) - sum) / LU(i, i);
+            y(i) = (b(i, j) - sum_i) / LU(i, i);
         }
         for (int i = n - 1; i >= 0; --i)
         {
-            SCALAR sum(0.0);
+            SCALAR sum_j(0.0);
             for (int k = i + 1; k < n; ++k)
             {
-                sum += LU(i, k) * x(k, j);
+                sum_j += LU(i, k) * x(k, j);
             }
-            x(i, j) = (y(i) - sum);  // not dividing by diagonals
+            x(i, j) = (y(i) - sum_j);  // not dividing by diagonals
         }
     }
 }
@@ -82,21 +82,21 @@ void ldlt(const Eigen::Matrix<SCALAR, Eigen::Dynamic, Eigen::Dynamic>& A,
     L.setIdentity();
     for (int j = 0; j < n; ++j)
     {
-        SCALAR sum(0.0);
+        SCALAR sum_i(0.0);
         for (int k = 0; k < j; ++k)
         {
-            sum += L(j, k) * L(j, k) * d(k);
+            sum_i += L(j, k) * L(j, k) * d(k);
         }
-        d(j) = A(j, j) - sum;
+        d(j) = A(j, j) - sum_i;
 
         for (int i = j + 1; i < n; i++)
         {
-            SCALAR sum(0.0);
+            SCALAR sum_j(0.0);
             for (int k = 0; k < j; ++k)
             {
-                sum += L(i, k) * L(j, k) * d(k);
+                sum_j += L(i, k) * L(j, k) * d(k);
             }
-            L(i, j) = (A(i, j) - sum) / d(j);
+            L(i, j) = (A(i, j) - sum_j) / d(j);
         }
     }
 }
@@ -118,22 +118,22 @@ void solveLDLT(const Eigen::Matrix<SCALAR, Eigen::Dynamic, Eigen::Dynamic>& L,
         // 1. solve L*y = b
         for (int i = 0; i < n; ++i)
         {
-            SCALAR sum(0.0);
+            SCALAR sum_i(0.0);
             for (int k = 0; k < i; k++)
             {
-                sum += L(i, k) * y(k);
+                sum_i += L(i, k) * y(k);
             }
-            y(i) = (b(i, j) - sum);
+            y(i) = (b(i, j) - sum_i);
         }
         // 2. solve D L^T  x = y
         for (int i = n - 1; i >= 0; --i)
         {
-            SCALAR sum(0.0);
+            SCALAR sum_j(0.0);
             for (int k = i + 1; k < n; ++k)
             {
-                sum += L(k, i) * x(k, j);
+                sum_j += L(k, i) * x(k, j);
             }
-            x(i, j) = (y(i) / d(i) - sum);
+            x(i, j) = (y(i) / d(i) - sum_j);
         }
     }
 }

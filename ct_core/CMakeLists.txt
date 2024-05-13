@@ -7,6 +7,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/clang-cxx-dev-tools.cmake)
 
 project(ct_core VERSION 3.0.2 LANGUAGES CXX)
 
+add_definitions(-DPLOTTING_ENABLED)
 #set(USE_PRESPEC TRUE CACHE BOOL "Enable pre-specified template instantiations for Control Toolbox" FORCE)
 #set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)

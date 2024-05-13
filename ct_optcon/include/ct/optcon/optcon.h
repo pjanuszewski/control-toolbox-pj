@@ -6,8 +6,8 @@ Licensed under the BSD-2 license (see LICENSE file in main directory)
 #ifndef INCLUDE_CT_OPTCON_OPTCON_H_
 #define INCLUDE_CT_OPTCON_OPTCON_H_
 
-#include <ct/core/core.h>
-
+#include <Eigen/Dense>
+#include <ct/core/core.h> // Add missing include path for "ct" library
 #include "costfunction/costfun.hpp"
 
 #include "constraint/constraint.h"
