@@ -33,27 +33,34 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/exampleDir.h.in ${CMAKE_CURRENT_SOURC
 # target_link_libraries(ex_DMS ct_optcon)
 # list(APPEND optcon_ex_TARGETS ex_DMS)
 
-# if(CPPADCG)
-#   add_executable(ex_LQR LQR.cpp)
-#   target_link_libraries(ex_LQR ct_optcon)
-#   list(APPEND optcon_ex_TARGETS ex_LQR)
-# endif()
+if(CPPADCG)
+  add_executable(ex_LQR LQR.cpp)
+  target_link_libraries(ex_LQR ct_optcon)
+  list(APPEND optcon_ex_TARGETS ex_LQR)
 
-if(HPIPM)
-    add_executable(ex_NLOC_boxConstrained NLOC_boxConstrained.cpp)
-    target_link_libraries(ex_NLOC_boxConstrained ct_optcon)
-    list(APPEND optcon_ex_TARGETS ex_NLOC_boxConstrained)
-    
-    if(CPPADCG)
-      add_executable(ex_NLOC_generalConstrained NLOC_generalConstrained.cpp)
-      target_link_libraries(ex_NLOC_generalConstrained ct_optcon)
-      list(APPEND optcon_ex_TARGETS ex_NLOC_generalConstrained)
-    
+  add_custom_command(
+    TARGET ex_LQR
+    POST_BUILD
+    COMMAND /home/pawelj/Git_repos/PX4-Autopilot/src/lib/control-toolbox/ct_optcon/build/examples/$<TARGET_FILE_NAME:ex_LQR>
+    COMMENT "Running ex_LQR executable as a post-build step."
+  )
+endif()
+
+# if(HPIPM)
+#     add_executable(ex_NLOC_boxConstrained NLOC_boxConstrained.cpp)
+#     target_link_libraries(ex_NLOC_boxConstrained ct_optcon)
+#     list(APPEND optcon_ex_TARGETS ex_NLOC_boxConstrained)
+
+#     if(CPPADCG)
+#       add_executable(ex_NLOC_generalConstrained NLOC_generalConstrained.cpp)
+#       target_link_libraries(ex_NLOC_generalConstrained ct_optcon)
+#       list(APPEND optcon_ex_TARGETS ex_NLOC_generalConstrained)
+
       # add_executable(switched_continuous_optcon_example switched_systems_optcon/switched_continuous_optcon.cpp)
       # target_link_libraries(switched_continuous_optcon_example ct_optcon)
       # list(APPEND optcon_ex_TARGETS switched_continuous_optcon_example)
-    endif()
-endif(HPIPM)
+#     endif()
+# endif(HPIPM)
 
 
 ## install examples
