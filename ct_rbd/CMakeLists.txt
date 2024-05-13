@@ -1,5 +1,4 @@
 # cmake_minimum_required (VERSION 3.5)
-
 # if(NOT TARGET clang-format)
 # 	include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/compilerSettings.cmake)
 # 	include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/explicitTemplateHelpers.cmake)

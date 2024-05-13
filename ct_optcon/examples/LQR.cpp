@@ -5,7 +5,7 @@
  */
 
 
-#include <ct/optcon/optcon.h>  // also includes ct_core
+#include <ct/optcon/optcon-prespec.h>  // also includes ct_core
 #include "exampleDir.h"
 
 // template <size_t STATE_DIM, size_t CONTROL_DIM>
@@ -104,6 +104,5 @@ int main(int argc, char** argv)
     std::ofstream outputFile("/home/pawelj/Git_repos/PX4-Autopilot/src/lib/rate_control/K_value.txt");
     outputFile << "LQR gain matrix:" << std::endl << K << std::endl;
     outputFile.close();
-
     return 0;
 }
